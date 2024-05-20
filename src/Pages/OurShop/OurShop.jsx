@@ -1,12 +1,17 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { useParams } from 'react-router-dom';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import coverImg from '../../assets/shop/banner2.jpg';
-import FoodCard from '../../components/FoodCard/FoodCard';
 import useMenu from '../../hooks/useMenu/useMenu';
 import Cover from '../Sheard/Cover/Cover';
+import ShopTab from './ShopTab/ShopTab';
 const OurShop = () => {
-    const [tabIndex, setTabIndex] = useState(0)
+    const categories = ['salad','pizza','soup','dessert','drinks']
+    const {category} = useParams();
+    const initialIndex = categories.indexOf(category)
+    const [tabIndex, setTabIndex] = useState(initialIndex)
     const [menu] = useMenu();
     const salad = menu.filter(item => item.category === 'salad');
     const pizza = menu.filter(item => item.category === 'pizza');
@@ -15,6 +20,9 @@ const OurShop = () => {
     const drinks = menu.filter(item => item.category === 'drinks');
     return (
         <div>
+            <Helmet>
+                <title>Bistro Boss | Shop</title>
+            </Helmet>
             <Cover
                 img={coverImg}
                 title={'OUR SHOP'}
@@ -29,41 +37,11 @@ const OurShop = () => {
                         <Tab>DESSERTS</Tab>
                         <Tab>DRINKS</Tab>
                     </TabList>
-                    <TabPanel>
-                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6'>
-                            {
-                                salad.map(item => <FoodCard key={item._id} item={item}></FoodCard>)
-                            }
-                        </div>
-                    </TabPanel>
-                    <TabPanel>
-                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6'>
-                            {
-                                pizza.map(item => <FoodCard key={item._id} item={item}></FoodCard>)
-                            }
-                        </div>
-                    </TabPanel>
-                    <TabPanel>
-                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6'>
-                            {
-                                soup.map(item => <FoodCard key={item._id} item={item}></FoodCard>)
-                            }
-                        </div>
-                    </TabPanel>
-                    <TabPanel>
-                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6'>
-                            {
-                                dessert.map(item => <FoodCard key={item._id} item={item}></FoodCard>)
-                            }
-                        </div>
-                    </TabPanel>
-                    <TabPanel>
-                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6'>
-                            {
-                                drinks.map(item => <FoodCard key={item._id} item={item}></FoodCard>)
-                            }
-                        </div>
-                    </TabPanel>
+                    <TabPanel><ShopTab item={salad}></ShopTab></TabPanel>
+                    <TabPanel><ShopTab item={pizza}></ShopTab> </TabPanel>
+                    <TabPanel><ShopTab item={soup}></ShopTab> </TabPanel>
+                    <TabPanel><ShopTab item={dessert}></ShopTab> </TabPanel>
+                    <TabPanel><ShopTab item={drinks}></ShopTab> </TabPanel>
                 </Tabs>
             </div>
         </div>

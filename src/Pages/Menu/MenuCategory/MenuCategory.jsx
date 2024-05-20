@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Cover from '../../Sheard/Cover/Cover';
 import MenuItem from "../../Sheard/MenuItem/MenuItem";
 
-const MenuCategory = ({ item, title, details, coverImg }) => {
+const MenuCategory = ({ item, title, details, img }) => {
     return (
         <div>
             {title && <Cover
-                img={coverImg}
+                img={img}
                 title={title}
                 details={details}
             ></Cover>}
@@ -19,14 +20,16 @@ const MenuCategory = ({ item, title, details, coverImg }) => {
                 }
             </div>
             <div className="flex items-center justify-center my-14">
-                <button className="py-2 px-4 border-b-[3px] rounded-b-lg ">ORDER YOUR FAVOURITE FOOD</button>
+                <Link to={`/shop/${title}`}>
+                    <button className="py-2 px-4 border-b-[3px] rounded-b-lg ">ORDER YOUR FAVOURITE FOOD</button>
+                </Link>
             </div>
         </div>
     );
 };
 MenuCategory.propTypes = {
     item: PropTypes.array,
-    coverImg: PropTypes.string,
+    img: PropTypes.string,
     title: PropTypes.string,
     details: PropTypes.string
 }

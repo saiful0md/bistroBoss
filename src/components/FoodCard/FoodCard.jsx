@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 const FoodCard = ({ item }) => {
     const { image, name, price, recipe } = item
     return (
-            <div className=' w-full card  flex flex-col items-center px-2'>
-                <div className='relative'>
-                    <img className=' w-[424px] h-[300px] object-cover' src={image} alt="" />
-                    <p className=' top-4 right-6 absolute bg-black text-white px-3 py-2'>${price}</p>
-                </div>
-                <div className='flex flex-col items-center text-center py-8 px-4 bg-[rgba(243,243,243,1)]'>
-                    <h3 className='text-[rgba(21,21,21,1)] text-2xl'>{name}</h3>
-                    <p className='text-[rgba(21,21,21,1)]'>{recipe}</p>
+        <div className="card rounded-none bg-base-100 shadow-xl">
+          <figure><img src={image} alt="Shoes" /></figure>
+          <p className='bg-black absolute right-4 top-4 px-3 py-2 text-white'>${price}</p>
+            <div className="card-body">
+                <h2 className="card-title">{name}</h2>
+                <p>{recipe}</p>
+                <div className="flex card-actions items-center justify-center my-14">
                     <button className='py-2 px-4 border-b-[3px]  text-[#BB8506] border-[#BB8506] hover:border-none rounded-lg uppercase bg-[rgba(232,232,232,1)] hover:bg-[rgba(31,41,55,1)] mt-4'>Add To Cart</button>
                 </div>
             </div>
+        </div>
     );
 };
 FoodCard.propTypes = {
