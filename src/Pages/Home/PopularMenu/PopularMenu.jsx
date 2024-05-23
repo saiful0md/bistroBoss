@@ -1,5 +1,5 @@
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
-import useMenu from "../../../hooks/useMenu/useMenu";
+import useMenu from "../../../hooks/useMenu";
 import MenuItem from "../../Sheard/MenuItem/MenuItem";
 
 

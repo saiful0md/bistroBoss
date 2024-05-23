@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import coverImg from '../../assets/shop/banner2.jpg';
-import useMenu from '../../hooks/useMenu/useMenu';
+import useMenu from '../../hooks/useMenu';
 import Cover from '../Sheard/Cover/Cover';
 import ShopTab from './ShopTab/ShopTab';
 const OurShop = () => {

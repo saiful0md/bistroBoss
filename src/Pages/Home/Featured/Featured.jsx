@@ -7,6 +7,7 @@ const Featured = () => {
             <SectionTitle
                 subHeading={'Check it out'}
                 heading={'FROM OUR MENU'}
+                textColor
             >
             </SectionTitle>
             <div className='lg:flex md:flex items-center gap-10 '>

@@ -5,12 +5,12 @@ import Navbar from "../Pages/Sheard/Navbar/Navbar";
 
 const Main = () => {
     const location = useLocation();
-    const isLogin = location.pathname.includes('login')
+    const noHeaderFooter = location.pathname.includes('login') || location.pathname.includes('signUp')
     return (
         <div>
-            {isLogin || <Navbar></Navbar>}
+            {noHeaderFooter || <Navbar></Navbar>}
             <Outlet></Outlet>
-            {isLogin || <Footer></Footer>}
+            {noHeaderFooter || <Footer></Footer>}
         </div>
     );
 };
